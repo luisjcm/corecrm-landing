@@ -35,7 +35,7 @@ export default function Header({ brand, navigation }) {
             className="bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 border border-emerald-500/20 px-4 py-2 rounded-lg text-sm font-bold transition-all"
             href="#contacto"
           >
-            Agendar Cita
+            Acceso anticipado
           </a>
           <button
             aria-controls="mobile-navigation"

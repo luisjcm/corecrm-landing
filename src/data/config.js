@@ -43,6 +43,15 @@ export const siteConfig = {
     ]
   },
 
+  waitlist: {
+    eyebrow: 'EARLY ACCESS',
+    heading: 'Sé de los primeros en probar CoreCRM',
+    description: 'Únete a nuestra lista de espera para la v1.0.0-beta. Te notificaremos en cuanto abramos los primeros cupos para desarrolladores.',
+    inputPlaceholder: 'tu@empresa.com',
+    buttonLabel: 'Solicitar acceso',
+    disclaimer: 'Cero spam. Solo te escribiremos cuando el entorno esté listo.'
+  },
+
   contact: {
     socialLinks: [
       { name: 'GitHub', icon: 'Github', href: 'https://github.com/luisjcm' },
