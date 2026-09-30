@@ -64,7 +64,7 @@ export const siteConfig = {
       { label: 'Guía de uso', href: '#' },
       { label: 'Licencia del proyecto', href: '#' }
     ],
-    copyrightLabel: 'CoreCRM · Proyecto para organizar clientes y equipos.',
+    copyrightLabel: 'Proyecto para organizar clientes y equipos.',
     developerText: 'Mantenido por',
     developerName: 'luisjcm',
     developerUrl: 'https://luisjcm.com'
