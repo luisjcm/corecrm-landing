@@ -1,45 +1,44 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
-import { siteConfig } from '../../data/config'
+import { BriefcaseBusiness, Camera, Code } from 'lucide-react'
 
 const socialIcons = {
-  Instagram: FaInstagram,
-  LinkedIn: FaLinkedinIn,
-  Facebook: FaFacebookF,
+  Instagram: Camera,
+  LinkedIn: BriefcaseBusiness,
+  Linkedin: BriefcaseBusiness,
+  GitHub: Code,
+  Github: Code,
 }
 
 /**
  * Pie de página con identidad de marca, navegación y enlaces sociales configurados.
  * @returns {JSX.Element}
  */
-export default function Footer() {
+export default function Footer({ brand, contact, footer, navigation }) {
   const year = new Date().getFullYear()
 
+  if (!brand || !footer) return null
+
   return (
-    <footer className="bg-teal-950 text-white">
-      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12">
-        
-        {/* Contenedor Principal: 2 columnas en móvil, 4 en desktop */}
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 border-b border-white/15 pb-10 md:grid-cols-4 lg:gap-12">
-          
-          {/* Columna 1: Marca y Redes */}
-          <div className="col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
-            <a className="font-sans font-bold text-3xl leading-none mb-8" href="#inicio">
-              {siteConfig.brand.name}
+    <footer className="bg-black border-t border-slate-900 pt-16 pb-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 lg:gap-12">
+          <div className="col-span-2 flex flex-col items-center text-center md:items-start md:text-left">
+            <a className="mb-8 text-3xl font-bold leading-none text-white" href="#inicio">
+              {brand?.name}
             </a>
 
             <ul aria-label="Redes sociales" className="flex items-center justify-center gap-3 md:justify-start">
-              {siteConfig.contact.socialLinks.map((social) => {
-                const Icon = socialIcons[social.icon]
+              {contact?.socialLinks?.map((social) => {
+                const Icon = socialIcons[social?.icon]
                 return (
-                  <li key={social.name}>
+                  <li key={social?.name}>
                     <a
-                      aria-label={social.name}
-                      className="flex h-10 w-10 items-center justify-center border border-white/20 text-white/75 transition-colors hover:border-teal-400 hover:text-teal-400"
-                      href={social.href}
+                      aria-label={social?.name}
+                      className="flex h-10 w-10 items-center justify-center border border-slate-800 text-slate-400 transition-colors hover:border-emerald-400 hover:text-emerald-400"
+                      href={social?.href}
                       rel="noreferrer"
                       target="_blank"
                     >
-                      <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
+                      {Icon && <Icon aria-hidden="true" size={18} strokeWidth={1.7} />}
                     </a>
                   </li>
                 )
@@ -47,17 +46,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Columna 2: Navegación */}
           <div className="col-span-1 flex flex-col items-start">
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-wider text-white">
+            <h3 className="text-white font-bold mb-4">
               Explorar
             </h3>
-            <nav aria-label={siteConfig.accessibility.navigationLabel}>
+            <nav aria-label="Navegación principal">
               <ul className="flex flex-col items-start gap-3">
-                {siteConfig.navigation.map((item) => (
-                  <li key={item.href}>
-                    <a className="text-sm text-white/70 transition-colors hover:text-teal-400" href={item.href}>
-                      {item.label}
+                {navigation?.map((item) => (
+                  <li key={item?.href}>
+                    <a className="text-sm text-slate-400 transition-colors hover:text-emerald-400" href={item?.href}>
+                      {item?.label}
                     </a>
                   </li>
                 ))}
@@ -65,42 +63,38 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Columna 3: Legal */}
           <div className="col-span-1 flex flex-col items-start">
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-wider text-white">
+            <h3 className="text-white font-bold mb-4">
               Legal
             </h3>
             <ul className="flex flex-col items-start gap-3">
-              {siteConfig.footer.legalLinks.map((link) => (
-                <li key={link.href}>
-                  <a className="text-sm text-white/70 transition-colors hover:text-teal-400" href={link.href}>
-                    {link.label}
+              {footer?.legalLinks?.map((link) => (
+                <li key={link?.href}>
+                  <a className="text-sm text-slate-400 transition-colors hover:text-emerald-400" href={link?.href}>
+                    {link?.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-          
         </div>
 
-        {/* Fila Inferior: Copyright y Firma */}
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-white/55 sm:flex-row">
+        <div className="border-t border-slate-900 mt-12 pt-8 flex flex-col gap-4 items-center justify-between text-sm text-slate-500 sm:flex-row">
           <p className="text-center sm:text-left">
-            © {year} {siteConfig.brand.name} · {siteConfig.footer.copyrightLabel}
+            © {year} {brand?.name} · {footer?.copyrightLabel}
           </p>
           <p className="text-center sm:text-right">
-            {siteConfig.footer.developerText}{' '}
+            {footer?.developerText}{' '}
             <a
-              href={siteConfig.footer.developerUrl}
+              href={footer?.developerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-white transition-colors hover:text-teal-400 hover:underline"
+              className="font-medium text-slate-400 transition-colors hover:text-emerald-400 hover:underline"
             >
-              {siteConfig.footer.developerName}
+              {footer?.developerName}
             </a>
           </p>
         </div>
-        
       </div>
     </footer>
   )
